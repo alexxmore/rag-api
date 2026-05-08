@@ -1,0 +1,29 @@
+app = "production-rag-api"
+primary_region = "waw"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  ENVIRONMENT = "production"
+  VECTOR_BACKEND = "faiss"
+  VECTOR_INDEX_PATH = "/data/vector_index"
+  SQLITE_PATH = "/data/usage.sqlite3"
+  SOURCE_PATH = "data/source.md"
+  MAX_LLM_CONCURRENCY = "20"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+
+[[vm]]
+  memory = "1gb"
+  cpu_kind = "shared"
+  cpus = 1
+
+[[mounts]]
+  source = "rag_data"
+  destination = "/data"

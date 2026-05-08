@@ -1,0 +1,22 @@
+keys:
+  demo-free:
+    tier: demo-free
+    tokens_per_minute: 5000
+    models:
+      - openrouter/free
+      - meta-llama/llama-3.2-3b-instruct:free
+      - meta-llama/llama-3.2-3b-instruct:free
+  demo-pro:
+    tier: demo-pro
+    tokens_per_minute: 20000
+    models:
+      - mistralai/mistral-small-3.1-24b-instruct
+      - google/gemini-2.0-flash-001
+      - meta-llama/llama-3.1-8b-instruct:free
+  demo-enterprise:
+    tier: demo-enterprise
+    tokens_per_minute: 100000
+    models:
+      - openai/gpt-4o
+      - anthropic/claude-3.5-sonnet
+      - google/gemini-2.0-flash-001
