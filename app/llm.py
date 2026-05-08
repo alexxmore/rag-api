@@ -73,7 +73,8 @@ class OpenRouterLLM:
             except asyncio.CancelledError:
                 raise
             except APIStatusError as exc:
-                if exc.status_code in RETRYABLE_STATUS:
+                invalid_model = exc.status_code == 400 and "not a valid model ID" in str(exc)
+                if exc.status_code in RETRYABLE_STATUS or invalid_model:
                     self.breaker.record_failure(model)
                     last_error = exc
                     continue
