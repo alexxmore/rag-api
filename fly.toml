@@ -1,5 +1,5 @@
-app = "production-rag-api"
-primary_region = "waw"
+app = "alexxmore-rag-api"
+primary_region = "fra"
 
 [build]
   dockerfile = "Dockerfile"

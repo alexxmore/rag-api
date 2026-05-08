@@ -10,11 +10,14 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir \
+    --trusted-host pypi.org \
+    --trusted-host files.pythonhosted.org \
+    --trusted-host download.pytorch.org \
+    --trusted-host download-r2.pytorch.org \
+    -r requirements.txt
 
 COPY . .
-
-RUN python scripts/index.py
 
 EXPOSE 8000
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
