@@ -2,6 +2,8 @@
 
 Minimal FastAPI RAG service for a document Q&A bot. It implements SSE streaming, API-key auth, token rate limiting, semantic cache, cost tracking, OpenRouter multi-model fallback, prompt-injection checks, Langfuse tracing hooks, and Docker/Fly deploy config.
 
+See [REPORT.md](REPORT.md) for implementation evidence, screenshots, deployment notes, known limitations, and workarounds discovered during testing.
+
 ## Stack
 
 - FastAPI + Uvicorn
@@ -127,3 +129,7 @@ https://production-rag-api.fly.dev
 ```
 
 Replace the app name in `fly.toml` with your actual Fly app name before deploying.
+
+## Known Limitations
+
+The deployed Fly.io version uses FAISS and local SQLite on a Fly volume. Redis, Qdrant Cloud, and Langfuse hooks are implemented/configurable, but external Redis, Qdrant, and Langfuse Cloud credentials were not enabled for this deployment. See [REPORT.md](REPORT.md) for the full engineering report and workaround notes.
